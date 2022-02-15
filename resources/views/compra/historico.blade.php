@@ -23,7 +23,7 @@
             <tr>
                 <th>Data da Compra</th>
                 <th>Situação</th>
-                <th></th>
+                <th>Detalhes</th>
             </tr>
             @foreach($lista as $ped)
                 <tr>

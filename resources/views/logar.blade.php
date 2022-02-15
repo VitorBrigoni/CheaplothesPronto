@@ -12,17 +12,19 @@
     <div class='col-12'>
         <h2 class='mb-3'>Logar no Sistema</h2>
 
-        <form action="{{ route('logar') }}" method='post'>
+        <form action="{{ route('logar') }}" method='post' class='mb-3'>
             @csrf
             <div class='form-group'>
-                Login:<input type='text' name='login' id='cpf' class='form-control'/>
+                CPF:<input type='text' name='login' id='cpf' class='form-control' placeholder='Insira seu CPF'/>
             </div>
 
             <div class='form-group'>
-                Senha:<input type='password' name='senha' class='form-control'/>
+                Senha:<input type='password' name='senha' class='form-control' placeholder='Insira sua senha'/>
             </div>
             
             <input type='submit' value='Logar' class='btn btn-lg btn-primary'/>
         </form>
+        <label class='mb-3'>Não tem conta? </label>
+        <a class='' href="{{ route('cadastrar') }}">Cadastrar</a>
     </div>
 @endsection

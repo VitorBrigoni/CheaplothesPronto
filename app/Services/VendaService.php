@@ -34,7 +34,7 @@ class VendaService {
                     $itens->save();
                 }
                 DB::commit();
-                return["status" => "ok", "message" => "Venda finalizada com sucesso"];
+                return["status" => "ok", "message" => "Venda finalizada com sucesso", 'idpedido' => $pedido->id];
         }catch(Exception $e){
             Log::error("ERRO: VENDA SERVICE", ['message' => $e->getMessage()]);
             return["status" => "err", "message" => "Venda não pode ser finalizada"];

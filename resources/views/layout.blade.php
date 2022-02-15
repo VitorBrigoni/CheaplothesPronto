@@ -15,10 +15,10 @@
 </head>
 <body>
     <nav class='navbar navbar-light navbar-expand-md bg-light pl-5 pr-5 mb-5'>
-        <a href='#' class='navbar-brand'>Cheaplothes</a>
+        <a href="{{ route('home') }}" class='navbar-brand'>Cheaplothes</a>
         <div class='colapse navbar-collapse'>
             <div class='navbar-nav'>
-                <a class='nav-link' href="{{ route('home') }}">HOME</a>
+                <a class='nav-link' href="{{ route('home') }}">Home</a>
                 <a class='nav-link' href="{{ route('categoria') }}">Categorias</a>
                 <a class='nav-link' href="{{ route('cadastrar') }}">Cadastrar</a>
                 @if(!Auth::user())
@@ -29,7 +29,9 @@
                 @endif
             </div>
         </div>
+        @if(Auth::user())
         <a href="{{ route('ver_carrinho') }}" class='btn btn-sm'><i class='fa fa-shopping-cart'></i></a>
+        @endif
     </nav>
     
     <div class='container'>
@@ -51,7 +53,7 @@
                     <div class='alert alert-success'>{{ $message }}</div>
                 </div>
             @endif
-            @yield("conteudo");
+            @yield("conteudo")
         </div>
     </div>
 </body>

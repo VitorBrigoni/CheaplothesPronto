@@ -42,7 +42,8 @@
                 </tr>
             </tfooter>
         </table>
-        <form method='post' action="{{ route('carrinho_finalizar') }}"> <!--Alterar aqui para realizar a função de pagamento -->
+        
+        <form method='post' action="{{ route('pagar') }}"> <!--Alterar aqui para realizar a função de pagamento -->
             @csrf
             <input type='submit' value='Finalizar Compra' class='btn btn-lg btn-success'/>
         </form>
