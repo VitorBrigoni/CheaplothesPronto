@@ -117,7 +117,7 @@
                 @foreach($cart as $indice => $p)
                     <tr>
                         <td>{{ $p->nome }}</td>
-                        <td>{{ $p->valor }}</td>
+                        <td>R$ {{ $p->valor }}</td>
                     </tr>
                     @php
                         $total +=$p->valor;
@@ -156,7 +156,7 @@
         </div>
         <div class='col-4'>
             Valor Total:
-            <input type='text' value=" {{ $total }} " name='totalfinal' class='totalfinal form-control' readonly />
+            <input type='text' value="R$ {{ $total }} " name='totalfinal' class='totalfinal form-control' readonly />
         </div>
         <div class='col-4'>
             Valor da Parcela:

@@ -20,7 +20,8 @@
             <div class='navbar-nav'>
                 <a class='nav-link' href="{{ route('home') }}">Home</a>
                 <a class='nav-link' href="{{ route('categoria') }}">Categorias</a>
-                <a class='nav-link' href="{{ route('cadastrar') }}">Cadastrar</a>
+                <a class='nav-link' href="{{ route('cadastrar') }}">Cadastrar Usuário</a>
+                <a class='nav-link' href="{{ route('cad_produto') }}">Cadastrar Produto</a>
                 @if(!Auth::user())
                     <a class='nav-link' href="{{ route('logar') }}">Logar</a>
                 @else

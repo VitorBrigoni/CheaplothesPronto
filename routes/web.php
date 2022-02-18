@@ -22,6 +22,20 @@ Route::match(['get', 'post'], '/categoria', [ProdutoController::class, 'categori
 
 Route::match(['get', 'post'], '/{idcategoria}/categoria', [ProdutoController::class, 'categoria'])->name('categoria_por_id');
 
+Route::match(['get', 'post'], '/cadproduto', [ProdutoController::class, 'cadProduto'])->name('cad_produto');
+
+Route::match(['get', 'post'], '/produto/cadproduto', [ProdutoController::class, 'cadastrarProduto'])->name('cadastrar_produto');
+
+Route::get('/produtos/{prod}/editar', [ProdutoController::class, 'edit'])->name('produtos_edit');
+
+Route::put('/produtos/{prod}/editar', [ProdutoController::class, 'update'])->name('produtos_update');
+
+Route::get('/produtos/{prod}/apagar', [ProdutoController::class, 'remove'])->name('produtos_remove');
+
+Route::delete('/produtos/{prod}/apagar', [ProdutoController::class, 'delete'])->name('produtos_delete');
+
+
+
 
 
 Route::match(['get', 'post'], '/cadastrar', [ClienteController::class, 'cadastrar'])->name('cadastrar');

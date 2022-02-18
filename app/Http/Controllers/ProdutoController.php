@@ -70,7 +70,7 @@ class ProdutoController extends Controller
             session([ 'cart' => $carrinho ]);
         }
 
-        return redirect()->route("home");
+        return redirect()->route("ver_carrinho");
     }
 
     public function verCarrinho(Request $request){
@@ -200,4 +200,65 @@ class ProdutoController extends Controller
 
          return view("compra/pagar", $data);
      }
+
+     public function cadProduto(){
+        return view('cadproduto');
+    }
+
+    public function cadastrarProduto(Request $form){
+       $prod = new Produto();
+
+       $prod->nome = $form->nome;
+       $prod->valor = $form->valor;
+       $prod->descricao = $form->descricao;
+       $prod->categoria_id = $form->categoria_id;
+        if($form->hasFile('foto') && $form->file('foto')->isValid()) {
+            $requestImage = $form->{'foto'};
+            $extension = $requestImage->extension();
+            $imgName = md5($requestImage->getClientoriginalName(). strtotime("now")) . "." . $extension;
+            $form->{'foto'}->move(public_path('img/'),$imgName);
+            $prod->foto = $imgName;
+        }
+        $prod->save();
+        return redirect()->route("categoria");
+    }
+
+    
+
+
+    public function edit(Produto $prod)
+    {
+        return view('editar', ['prod' => $prod, 'pagina' => 'home']);
+    }
+
+    public function update(Request $form, Produto $prod)
+    {
+        $prod->nome = $form->nome;
+        $prod->valor = $form->valor;
+        $prod->descricao = $form->descricao;
+        $prod->categoria_id = $form->categoria_id;
+        if($form->hasFile('foto') && $form->file('foto')->isValid()) {
+            $requestImage = $form->{'foto'};
+            $extension = $requestImage->extension();
+            $imgName = md5($requestImage->getClientoriginalName(). strtotime("now")) . "." . $extension;
+            $form->{'foto'}->move(public_path('img/'),$imgName);
+            $prod->foto = $imgName;
+        }
+        $prod->save();
+
+        return redirect()->route('home');
+    }
+
+    public function remove(Produto $prod)
+    {
+        return view('apagar', ['prod' => $prod, 'pagina' => 'home']);
+    }
+
+    public function delete(Produto $prod)
+    {
+        $prod->delete();
+
+        return redirect()->route('home');
+    }
+
 }
